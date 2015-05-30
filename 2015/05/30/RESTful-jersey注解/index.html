@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>RESTful之jersey注解 | biscuit</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="biscuit">
+    <meta name="author" content="hexufeng">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/biscuit/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/biscuit/atom.xml" title="biscuit" type="application/atom+xml">
+    <link rel="stylesheet" href="/biscuit/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/biscuit/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/biscuit/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/biscuit/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/biscuit/js/html5shiv.min.js"></script>
+    <script src="/biscuit/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/biscuit/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/biscuit/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/biscuit/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/biscuit/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/biscuit/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://www.matestrip.com" class="animsition-link">Matestrip</a></li>
+                    
+                    <li><a href="http://www.google.com" class="animsition-link">Google</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/biscuit/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/biscuit/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/biscuit/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">biscuit</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!-- ============================ Hero Image =========================== -->
+
+        <section id="hero" class="scrollme">
+            <div class="container-fluid element-img" style="background: url(/biscuit/img/1.jpg) no-repeat center center fixed">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                        <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                            <div>
+                            	
+                                <h2>GOOD THINGS TAKE TIME</h2>
+                                <p></p>
+				    			
+                                <h2></h2>
+                                <p></p>
+				    			
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // .col-md-12 -->
+                </div>
+                <div class="herofade beige-dk"></div>
+            </div>
+        </section>
+
+        <!-- Height spacing helper -->
+        <div class="heightblock"></div>
+        <!-- // End height spacing helper -->
+
+        <!-- ============================ END Hero Image =========================== -->
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2015-05-30T10:38:44.000Z" itemprop="datePublished">
+          2015-05-30
+      </time>
+    
+</span>
+                <h1>RESTful之jersey注解</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>RESTful，目前最流行的Web软件架构，它既不是一种标准（因为标准会对很多技术细节进行严格定义），也不是一个程序框架，而是定义了从Web到浏览器的资源层面的定义和操作模式。HTTP请求、浏览器、以及要提到的jersey都是实现RESTful的一部分。资源（Resource）是RESTful中很重要的一个元素，操作资源对应资源的状态转化（State Transfer），例如客户端访问资源，对资源进行增删改查，就对应于该资源的状态变化。HTTP协议里定义了四种资源操作的动词：GET、PUT、POST、DELETE，如果严格按照标准，获取资源应该利用HTTP GET方式、增加资源应该利用HTTP POST方式、修改资源应该利用HTTP PUT方式、删除资源应该利用HTTP DELETE方式。另外，去深究何为RESTful的概念，给它一个完全的定义是没有意义的，Web项目经验多了，自然会对其有所理解。</p>
+<p>jersey提供丰富的annotations可供使用，大大提高了从client到service的调用简便性，结合Swagger使用，可以很方便的开发后台service供前端人员调用，其注解中包含的@POST、@GET、@PUT、@DELETE 可以严格的限制资源访问的HTTP请求形式，下面，本文还将介绍其他常用注解。</p>
+<h3 id="1，@Path">1，@Path</h3><p>@path注解定义了资源的URI相对路径。 如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Path</span>(<span class="string">"/users/&#123;username&#125;"</span>)</span><br></pre></td></tr></table></figure><br>在上面这个例子中，前端在url中传入username参数值发起请求，jersey框架会识别该url并调用被该url注释的方法，在该方法里可以通过传入@PathParam(“username”)前缀的参数获取到username的值。<br>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Path</span>(<span class="string">"/users/&#123;username&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserResource</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="annotation">@GET</span></span><br><span class="line">    <span class="annotation">@Produces</span>(<span class="string">"text/xml"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUser</span><span class="params">(@PathParam(<span class="string">"username"</span>)</span> String userName) </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2，@GET,_@PUT,_@POST,_@DELETE">2，@GET, @PUT, @POST, @DELETE</h3><p>@GET, @PUT, @POST, @DELETE是jersey中定义的资源请求方式，和HTTP中同名请求方式对应，即HTTP GET请求被jersey处理之后只会调用到对应url并且被@GET注解的方法，注意jersey中可以叠加注释实现and（且）的限制结果。例如如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@PUT</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Response <span class="title">putContainer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"PUT CONTAINER "</span> + container);</span><br><span class="line"> </span><br><span class="line">    URI uri = uriInfo.getAbsolutePath();</span><br><span class="line">    Container c = <span class="keyword">new</span> Container(container, uri.toString());</span><br><span class="line"> </span><br><span class="line">    Response r;</span><br><span class="line">    <span class="keyword">if</span> (!MemoryStore.MS.hasContainer(c)) &#123;</span><br><span class="line">        r = Response.created(uri).build();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        r = Response.noContent().build();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    MemoryStore.MS.createContainer(c);</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3，@Produces">3，@Produces</h3><p>@Produces用于限制post和get方法返回的参数类型，支持json、string、xml、html。 例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Path</span>(<span class="string">"/myResource"</span>)</span><br><span class="line"><span class="annotation">@Produces</span>(<span class="string">"text/plain"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SomeResource</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@GET</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">doGetAsPlainText</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="annotation">@GET</span></span><br><span class="line">    <span class="annotation">@Produces</span>(<span class="string">"text/html"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">doGetAsHtml</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>doGetAsPlainText()方法应用于类注解的plain级别，而doGetAsHtml()覆盖了类注释的类型，只响应html类型，例如，如果想要响应给客户端text/plain媒体类型，调用doGetAsPlainText()即可，此时响应的HTTP Accept header为”Accept: text/plain”，如果HTTP Accept header是” Accept: text/plain;q=0.9, text/html”，也就是定义了客户端只接受的媒体类型为”text/plain” 和 “text/html” 但后者优先，则可以调用doGetAsHtml() 。<br>另外，@Produces中还可以定义多种媒体类型：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@GET</span></span><br><span class="line"><span class="annotation">@Produces</span>(&#123;<span class="string">"application/xml"</span>, <span class="string">"application/json"</span>&#125;)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">doGetAsXmlOrJson</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4，@Consumes">4，@Consumes</h3><p>@Consumes用于限制输入的参数的类型，支持json、string、xml、html，机理和@Produce类似，如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@POST</span></span><br><span class="line"><span class="annotation">@Consumes</span>(<span class="string">"text/plain"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postClichedMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Store the message</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="5，Parameter_Annotations_(@*Param)">5，Parameter Annotations (@*Param)</h3><p>参数注释包含@PathParam、@QueryParam、 @MatrixParam、@HeaderParam、 @CookieParam、@FormParam以及@BeanParam等。</p>
+<h4 id="@PathParam">@PathParam</h4><p>@PathParam用户提取URL路径里的参数，如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Path</span>(<span class="string">"/users/&#123;username&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserResource</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="annotation">@GET</span></span><br><span class="line">    <span class="annotation">@Produces</span>(<span class="string">"text/xml"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUser</span><span class="params">(@PathParam(<span class="string">"username"</span>)</span> String userName) </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="@QueryParam">@QueryParam</h4><p>@QueryParam用于从请求URL的查询字符串中提取查询参数，什么叫URL的查询字符串呢？例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.yourwebsite.com/mynewtester/index.html?username=biscuit-cat&amp;rptmode=2"</span>&gt;</span>WCAG Accessibility Check<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure><br>?后面的就是查询字符串，”username”和”rptmode”就是查询参数。<br>@QueryParam的使用例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Path</span>(<span class="string">"smooth"</span>)</span><br><span class="line"><span class="annotation">@GET</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Response <span class="title">smooth</span><span class="params">(</span><br><span class="line">    @DefaultValue(<span class="string">"2"</span>)</span> @<span class="title">QueryParam</span><span class="params">(<span class="string">"step"</span>)</span> <span class="keyword">int</span> step,</span><br><span class="line">    @<span class="title">DefaultValue</span><span class="params">(<span class="string">"true"</span>)</span> @<span class="title">QueryParam</span><span class="params">(<span class="string">"min-m"</span>)</span> <span class="keyword">boolean</span> hasMin,</span><br><span class="line">    @<span class="title">DefaultValue</span><span class="params">(<span class="string">"true"</span>)</span> @<span class="title">QueryParam</span><span class="params">(<span class="string">"max-m"</span>)</span> <span class="keyword">boolean</span> hasMax,</span><br><span class="line">    @<span class="title">DefaultValue</span><span class="params">(<span class="string">"true"</span>)</span> @<span class="title">QueryParam</span><span class="params">(<span class="string">"last-m"</span>)</span> <span class="keyword">boolean</span> hasLast,</span><br><span class="line">    @<span class="title">DefaultValue</span><span class="params">(<span class="string">"blue"</span>)</span> @<span class="title">QueryParam</span><span class="params">(<span class="string">"min-color"</span>)</span> ColorParam minColor,</span><br><span class="line">    @<span class="title">DefaultValue</span><span class="params">(<span class="string">"green"</span>)</span> @<span class="title">QueryParam</span><span class="params">(<span class="string">"max-color"</span>)</span> ColorParam maxColor,</span><br><span class="line">    @<span class="title">DefaultValue</span><span class="params">(<span class="string">"red"</span>)</span> @<span class="title">QueryParam</span><span class="params">(<span class="string">"last-color"</span>)</span> ColorParam lastColor) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>查询参数如果没有提供，则取@DefaultValue的值。</p>
+<h4 id="@MatrixParam">@MatrixParam</h4><p>在了解它之前请先看下关于URL部分的一些定义：<br><blockquote><p>path          = [ abs_path | opaque_part ]</p>
+<p>  path_segments = segment <em>( “/“ segment )<br>  segment       = </em>pchar <em>( “;” param )<br>  param         = </em>pchar</p>
+<p>  pchar         = unreserved | escaped |<br>                  “:” | “@” | “&amp;” | “=” | “+” | “$” | “,”</p>
+</blockquote><br>好了，现在你应该了解path segments是什么了，那么@MatrixParam就是提取该部分信息的。用户可以自行研究，笔者还没有实践用过这个注释。</p>
+<h4 id="@HeaderParam、_@CookieParam">@HeaderParam、 @CookieParam</h4><p>@HeaderParam用户提取HTTP头信息的参数，@CookieParam用户提取HTTP头信息中cookie部分的参数。</p>
+<h4 id="@FormParam">@FormParam</h4><p>@FormParam用于提取HTML form表单的参数，如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@POST</span></span><br><span class="line"><span class="annotation">@Consumes</span>(<span class="string">"application/x-www-form-urlencoded"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">post</span><span class="params">(@FormParam(<span class="string">"name"</span>)</span> String name) </span>&#123;</span><br><span class="line">    <span class="comment">// Store the message</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="@BeanParam">@BeanParam</h4><p>下面请看一段@BeanParam的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanParam</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@PathParam</span>(<span class="string">"p"</span>)</span><br><span class="line">    <span class="keyword">private</span> String pathParam;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@MatrixParam</span>(<span class="string">"m"</span>)</span><br><span class="line">    <span class="annotation">@Encoded</span></span><br><span class="line">    <span class="annotation">@DefaultValue</span>(<span class="string">"default"</span>)</span><br><span class="line">    <span class="keyword">private</span> String matrixParam;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@HeaderParam</span>(<span class="string">"header"</span>)</span><br><span class="line">    <span class="keyword">private</span> String headerParam;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String queryParam;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyBeanParam</span><span class="params">(@QueryParam(<span class="string">"q"</span>)</span> String queryParam) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queryParam = queryParam;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPathParam</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pathParam;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@POST</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">post</span><span class="params">(@BeanParam MyBeanParam beanParam, String entity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> String pathParam = beanParam.getPathParam(); <span class="comment">// contains injected path parameter "p"</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>在post中调用了beanParam.getPathParam()的时候，返回的是一个已经被注入了的name为”p”的pathParam。@BeanParam的功能还是蛮不错的，可以用来集中管理各路*Param，Great ！</p>
+<p>需求总是千变万化的，如果有一天你突然想得到pathParam或QueryParam的Map实例，除了自己挨个得到再构造Map之外，有没有简便的方法呢，答案是有的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@GET</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">(@Context UriInfo ui)</span> </span>&#123;</span><br><span class="line">    MultivaluedMap&lt;String, String&gt; queryParams = ui.getQueryParameters();</span><br><span class="line">    MultivaluedMap&lt;String, String&gt; pathParams = ui.getPathParameters();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@GET</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">(@Context HttpHeaders hh)</span> </span>&#123;</span><br><span class="line">    MultivaluedMap&lt;String, String&gt; headerParams = hh.getRequestHeaders();</span><br><span class="line">    Map&lt;String, Cookie&gt; pathParams = hh.getCookies();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>任何一个好的框架的设计者，一定是经历过各种程序江湖纷纷扰扰大小事情的人，他们不但精通技艺，更是阅人无数、知晓他人。这也是框架开发的难点，不难技术上要求较高，而且要满足多样化需求。<br>上面的例子中提到了@Context,以及一些其他注释，有兴趣的读者可以自行研究，本文是我根据最近一个项目总结下来的，先介绍这些。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/biscuit/2015/05/20/汇编语言学习笔记/">
+        汇编语言学习笔记 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2015/05/30/RESTful-jersey注解/" data-title="RESTful之jersey注解" data-url="http://hexufeng.github.io/biscuit/2015/05/30/RESTful-jersey注解/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, hexufeng. All Rights Reserved. Theme By Kieran
+                </p>
+                
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/biscuit/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/biscuit/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/biscuit/js/scripts.js"></script><!-- Theme scripts -->
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
