@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>汇编语言学习笔记 | biscuit</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="biscuit">
+    <meta name="author" content="hexufeng">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/biscuit/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/biscuit/atom.xml" title="biscuit" type="application/atom+xml">
+    <link rel="stylesheet" href="/biscuit/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/biscuit/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/biscuit/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/biscuit/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/biscuit/js/html5shiv.min.js"></script>
+    <script src="/biscuit/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/biscuit/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/biscuit/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/biscuit/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/biscuit/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/biscuit/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://www.matestrip.com" class="animsition-link">Matestrip</a></li>
+                    
+                    <li><a href="http://www.google.com" class="animsition-link">Google</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/biscuit/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/biscuit/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/biscuit/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">biscuit</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!-- ============================ Hero Image =========================== -->
+
+        <section id="hero" class="scrollme">
+            <div class="container-fluid element-img" style="background: url(/biscuit/img/1.jpg) no-repeat center center fixed">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                        <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                            <div>
+                            	
+                                <h2>GOOD THINGS TAKE TIME</h2>
+                                <p></p>
+				    			
+                                <h2></h2>
+                                <p></p>
+				    			
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // .col-md-12 -->
+                </div>
+                <div class="herofade beige-dk"></div>
+            </div>
+        </section>
+
+        <!-- Height spacing helper -->
+        <div class="heightblock"></div>
+        <!-- // End height spacing helper -->
+
+        <!-- ============================ END Hero Image =========================== -->
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2015-05-20T13:16:12.000Z" itemprop="datePublished">
+          2015-05-20
+      </time>
+    
+</span>
+                <h1>汇编语言学习笔记</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<blockquote><p>这篇文章是我曾经上学的时候在一学期的时间里不断学习记录下来的，以前的百度博客被关闭了，里面好多文章当时写的时候都没有注释，现在也看不明白了，并且大多在网上搜一下就能搜到，也就没有迁移的必要，但由于这篇曾花费了我大量心思，并且可以留存作为参考，所以把它放这里来以免丢失。</p>
+</blockquote>
+<p>①   80*86CPU不支持将立即数直接送入段地址寄存器中。。</p>
+<p>②mov指令不能用于修改IP的值，可以通过jmp指令：”jmp 段地址：偏移地址”的形式把CS修改为段地址、把IP修改为偏移地址；或者如果只想修改IP的值，则可以用“jmp 某一合法寄存器”的格式，如“jmp ax”(将IP的值修改为当前ax的值)。。jmp 1000:0。。</p>
+<p>③mov指令可以设置DS的值，形如“mov ds,bx”。。</p>
+<p>④从某一指定的内存单元到寄存器之间进行数据传递时，可用“mov cx,[0]”或者</p>
+<p>“mov [0],dx”的格式，此时”[]”表示内存单元，里面的数字“0”表示该内存单元的</p>
+<p>偏移地址；那么段地址呢？系统默认DS的值为该段地址。。联想到系统执行一条指令的</p>
+<p>时候会默认从 CS：IP表示的内存段开始执行里面的指令代码。。<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="number">bx</span>,<span class="number">1000H</span></span><br><span class="line"><span class="keyword">mov</span> <span class="literal">ds</span>,<span class="number">bx</span></span><br><span class="line"><span class="keyword">mov</span> [<span class="number">0</span>],<span class="literal">al</span> <span class="comment">;将al中的值传送到1000：0的内存当中(传送了一个字节)</span></span><br><span class="line"><span class="keyword">mov</span> <span class="number">ax</span>,[<span class="number">0</span>] <span class="comment">;将1000:0中的值传送到ax中(传送了一个字）。</span></span><br></pre></td></tr></table></figure></p>
+<p>⑤mov指令有以下形式(不断补充中)：<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="number">ax</span>,<span class="number">10000</span> <span class="comment">;10000表示十进制</span></span><br><span class="line"><span class="keyword">mov</span> <span class="number">ax</span>,<span class="number">bx</span></span><br><span class="line"><span class="keyword">mov</span> <span class="number">bx</span>,[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">mov</span> [<span class="number">0</span>],<span class="number">cx</span></span><br><span class="line"><span class="keyword">mov</span> <span class="literal">ds</span>,<span class="number">ax</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="number">ax</span>,<span class="literal">ds</span></span><br><span class="line"><span class="keyword">mov</span> [<span class="number">0</span>],<span class="literal">ds</span></span><br><span class="line"><span class="keyword">mov</span> <span class="literal">ds</span>,[<span class="number">0</span>]</span><br></pre></td></tr></table></figure><br>add、sub对通用寄存器的操作和mov的以上方法类似，但是不可以操作段寄存器。例如，add ds,ax\add ax,cs</p>
+<p>都是错误的操作。。</p>
+<p>⑥8086CPU的入栈和出栈操作都是以字为单位进行的。</p>
+<p>⑦pop和push的操作：<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">push</span> <span class="number">ax</span></span><br><span class="line"><span class="keyword">push</span> <span class="literal">ds</span></span><br><span class="line"><span class="keyword">push</span> [<span class="number">0</span>] ；段地址还是在<span class="literal">ds</span>中。</span><br><span class="line"></span><br><span class="line">-----------<span class="keyword">pop</span>类似-----------</span><br></pre></td></tr></table></figure></p>
+<p>⑧在清零操作中，用 sub ax,ax 要比 mov ax,0 好，因为前者的机器码为2个字节，后者为3个。。</p>
+<p>⑨如果将10000H~1FFFFH这段空间当做栈段，初始时栈空，SS为1000H，那么SP为？</p>
+<p>答案为0000。当溢出后栈顶会环绕，覆盖原有数据。。</p>
+<p>⑩一般情况下Debug执行汇编指令时逐条顺次执行的，但是Debug在执行修改SS寄存器中内容的指令的时候，紧接着它的下一条指令也被执行了，这跟中断机制有关。。</p>
+<p>11Dos系统中.EXE文件的加载过程：</p>
+<p>1）cmd在内存中找到一块以0结尾的空闲地址块（设为SA:0000）;</p>
+<p>2）将以SA开始的连续256个字节为PSP区（cmd与.exe文件互相通信的数据</p>
+<p>区）；</p>
+<p>3）紧接PSP区之后，即段地址为SA+10H：0的地址块中加载要运行的.EXE文</p>
+<p>件的code；</p>
+<p>4）将DS的值设置为SA，初始化相关寄存器，将CS：IP的值设置为指向SA+10H：0；</p>
+<p>12loop指令：</p>
+<p>loop指令分两步执行： 1）(cx)=(cx)-1; 2）判断CX的值，若不为0</p>
+<p>则跳转到loop指令所在处，如果为0则向下顺序执行。。</p>
+<p>13汇编语言程序中不允许数字以字母开头，也就是&gt;=A000H 的数字要写成0A000H等。。</p>
+<p>14在汇编中如果用指令访问一个内存单元，则必须用“[]”将内存单元括起来，debug</p>
+<p>和汇编程序对“mov al,[0]”的解释是不同的，要想让汇编程序达到和debug中“mov </p>
+<p>al,[0]”同样的目的，则可以：<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="literal">bl</span>,<span class="number">0fffH</span></span><br><span class="line"><span class="keyword">mov</span> <span class="literal">ds</span>,<span class="literal">bl</span></span><br><span class="line"><span class="keyword">mov</span> <span class="literal">al</span>,<span class="literal">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure><br>或者格式mov al,[bx]也可以，效果为(al)=((ds)*16+bx)。。</p>
+<p>15断前缀：“CS：”“DS：”“SS：”“ES：”。。</p>
+<p>16一般PC机上，Dos模式下，系统不会使用0:0200~0:02FF这段地址空间，所以可以在这</p>
+<p>断地址空间进行数据操作，从而安全。。(为什么这段空间没有被系统使用，待解决？？)</p>
+<p>17 定义断的意义有两个：提示操作系统在加载程序的时候分配内存空间；方便代码编写与</p>
+<p>管理。。</p>
+<p>18debug常用命令？？尤其是修改寄存器值的-e命令怎么用？？竟然忘了，滋乖乖。。</p>
+<p>19往往在程序最后有end start伪指令，该指令说明end不但有结束程序的作用，还有指明</p>
+<p>程序入口的作用(这种指明的过程是：编译程序在编译连接的时候将程序的信息和程序的</p>
+<p>可执行二进制代码一起编译进exe文件中，并且将start:所指的地址设置为程序的入口信</p>
+<p>息，exe文件执行时，被某程序加载到内存，比如cmd.exe，然后操作系统自动根据</p>
+<p>exe文件的额外信息段(二进制数据)将cs:ip设置为特定是值，这里为start:所指的位置处)。。。</p>
+<p>20看懂下面程序各句代码在内存中的位置，可以更好的理解程序被加载进内存后相关寄存</p>
+<p>器的值的情况：(这段代码所生成的exe被刚加载进内存时，CS=0C2B, IP=0000)<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">(0C29:<span class="number">0</span>)DATAS <span class="built_in">SEGMENT</span></span><br><span class="line"><span class="pseudo">dw</span> <span class="number">0123h</span>,<span class="number">0456h</span>,<span class="number">0789h</span>,<span class="number">0abch</span>,<span class="number">0defh</span>,<span class="number">0acbh</span>,<span class="number">0fedh</span>,<span class="number">0987h</span></span><br><span class="line">(0C2A:<span class="number">0</span>)<span class="pseudo">dw</span> <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>     </span><br><span class="line">(0C2B:<span class="number">0</span>)DATAS ENDS</span><br><span class="line"></span><br><span class="line">(0C2B:<span class="number">0</span>)CODES <span class="built_in">SEGMENT</span></span><br><span class="line">    <span class="preprocessor">ASSUME</span> <span class="literal">CS</span>:CODES,<span class="literal">DS</span>:DATAS</span><br><span class="line">(0C2B:<span class="number">0</span>)START:</span><br><span class="line">   <span class="keyword">MOV</span> <span class="number">AX</span>,DATAS</span><br><span class="line">   <span class="keyword">MOV</span> <span class="literal">DS</span>,<span class="number">AX</span></span><br><span class="line">  <span class="comment">;  MOV DX,CODES</span></span><br><span class="line">  <span class="comment">;  MOV CX,START</span></span><br><span class="line">    <span class="keyword">MOV</span> <span class="number">AX</span>,<span class="literal">DS</span></span><br><span class="line">    <span class="keyword">MOV</span> <span class="literal">SS</span>,<span class="number">AX</span></span><br><span class="line">    <span class="keyword">MOV</span> <span class="literal">SP</span>,<span class="number">20H</span></span><br><span class="line">    <span class="keyword">MOV</span> <span class="number">CX</span>,<span class="number">8</span></span><br><span class="line">    <span class="keyword">MOV</span> <span class="number">BX</span>,<span class="number">0</span></span><br><span class="line"><span class="label">S:</span>  <span class="keyword">PUSH</span> <span class="literal">DS</span>:[<span class="number">BX</span>]</span><br><span class="line">    <span class="keyword">ADD</span> <span class="number">BX</span>,<span class="number">2</span></span><br><span class="line">    <span class="keyword">LOOP</span> S</span><br><span class="line">    <span class="keyword">MOV</span> <span class="number">CX</span>,<span class="number">8</span></span><br><span class="line">    <span class="keyword">MOV</span> <span class="number">BX</span>,<span class="number">0</span></span><br><span class="line"><span class="label">N:</span><span class="keyword">POP</span> <span class="literal">DS</span>:[<span class="number">BX</span>]</span><br><span class="line"><span class="keyword">ADD</span> <span class="number">BX</span>,<span class="number">2</span></span><br><span class="line"><span class="keyword">LOOP</span> N</span><br><span class="line">    <span class="keyword">MOV</span> <span class="number">AH</span>,<span class="number">4C00H</span></span><br><span class="line">    <span class="keyword">INT</span> <span class="number">21H</span></span><br><span class="line">CODES ENDS</span><br><span class="line">    END START</span><br></pre></td></tr></table></figure><br>解释：程序在被加载进内存的时候首先是将CS设置成CODES所在地址，根据START所在的地址设置成IP的值，不一定为0。。因为CODES段的第一条语句不一定被START所指。</p>
+<p>21MOV AX,[BX+200]、MOV AX,200[BX]、MOV AX,[BX].200三者意思一样。</p>
+<p>22MOV IDATA[BX]和C语言中mov a[i]有一些千丝万缕的联系。注意：这里不仅只为BX，</p>
+<p>还可以是SI、DI。</p>
+<p>23对于MOV AX,DS:[BX]或者MOV AX,SS:[BX]这样的指令来说，其中的BX不可由其他寄存器替换。。</p>
+<p>24可用指令：MOV AX,DS:[BX+SI]或者MOV AX,DS:[BX+DI]实现数据转移。此时还可以写成：MOV AX,[BX][SI]的格式。。</p>
+<p>25可用指令:MOV AX,[BX+SI+200]实现数据转移，SI和DI可以互换。。该指令还可以写成：MOV AX,200[BX][SI]、或者MOV AX,[BX].200[SI]、或者MOV AX,[BX][SI].200。。</p>
+<p>26在两层循环的时，由于在内层循环中改变了CX的值，所以可以在外层中内层开始前用DX把CX的值记下来，等内层循环结束后再赋值给CX。。下面代码的实现说明了这种方法：<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">ASSUME</span> <span class="literal">CS</span>:CODESG,<span class="literal">DS</span>:DATASG</span><br><span class="line"></span><br><span class="line">DATASG <span class="built_in">SEGMENT</span></span><br><span class="line"><span class="pseudo">DB</span> <span class="string">'ABM             '</span></span><br><span class="line"><span class="pseudo">DB</span> <span class="string">'DOC             '</span></span><br><span class="line"><span class="pseudo">DB</span> <span class="string">'DEX             '</span></span><br><span class="line"><span class="pseudo">DB</span> <span class="string">'IBM             '</span></span><br><span class="line">DATASG ENDS </span><br><span class="line">CODESG <span class="built_in">SEGMENT</span></span><br><span class="line"><span class="label"></span><br><span class="line">START:</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,DATASG</span><br><span class="line"><span class="keyword">MOV</span> <span class="literal">DS</span>,<span class="number">AX</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="number">BX</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="literal">SI</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="number">CX</span>,<span class="number">4</span></span><br><span class="line"><span class="label">S0:</span><span class="keyword">MOV</span> <span class="number">DX</span>,<span class="number">CX</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="literal">SI</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="number">CX</span>,<span class="number">3</span></span><br><span class="line"><span class="label">S:</span><span class="keyword">MOV</span> <span class="literal">AL</span>,[<span class="number">BX</span>+<span class="literal">SI</span>]</span><br><span class="line"><span class="keyword">OR</span> <span class="literal">AL</span>,<span class="number">00100000B</span></span><br><span class="line"><span class="keyword">MOV</span> [<span class="number">BX</span>+<span class="literal">SI</span>],<span class="literal">AL</span></span><br><span class="line"><span class="keyword">INC</span> <span class="literal">SI</span></span><br><span class="line"><span class="keyword">LOOP</span> S</span><br><span class="line"><span class="keyword">ADD</span> <span class="number">BX</span>,<span class="number">10H</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="number">CX</span>,<span class="number">DX</span></span><br><span class="line"><span class="keyword">LOOP</span> S0</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,<span class="number">4C00H</span></span><br><span class="line"><span class="keyword">INT</span> <span class="number">21H</span></span><br><span class="line">CODESG ENDS </span><br><span class="line"></span><br><span class="line">END START</span><br></pre></td></tr></table></figure><br>值得注意的是：这种方法只适用于DX在内外都没有被使用的情况，如果程序较复杂，则这种方法很难奏效。于是很自然想到可以将CX的值存储在内存的某个地方。（代码怎么写？）。。但是若直接存储，需要记住内存地址，不方便。于是我们可以使用栈来实现。(想想代码怎么写？)</p>
+<p>27用reg表示通用寄存器，则reg： AX,BX,CX,DX,AL,BL,CL,DL,AH,BH,CH,DH,BP,SP,SI,DI</p>
+<p>用sreg表示段寄存器，则sreg：SS,DS,CS,ES</p>
+<p>28<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[IDATA]</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[<span class="number">BX</span>]</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[<span class="number">BX</span>+IDATA]</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[<span class="literal">SI</span>]</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[<span class="number">BX</span>+<span class="literal">SI</span>]</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[<span class="number">BX</span>+<span class="literal">SI</span>+IDATA]</span><br></pre></td></tr></table></figure><br>此时没有显式的给出段地址，程序默认段地址是在CS中。</p>
+<hr>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[<span class="literal">BP</span>]</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[<span class="literal">BP</span>+IDATA]</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[<span class="literal">BP</span>+<span class="literal">SI</span>]</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,[<span class="literal">BP</span>+<span class="literal">SI</span>+IDATA]</span><br></pre></td></tr></table></figure>
+<p>;SI和DI可以互换。。同时可以看出：BP和BX是不可以同时出现的。SI和DI是不可以同;时出现的。。</p>
+<p>此时没有显式的给出段地址，程序默认段地址是在SS中。</p>
+<p>29SS:SP用来定位栈地址。</p>
+<p>30对于直接包含在指令中的数据也就是立即数，执行前存储在CPU的指令缓存器中。。</p>
+<p>31IDATA[BX]、IDATA[SI]、IDATA[BP]可以实现C语言中数组的功能，对应于指令：MOV AX,[BX+IDATA]等；</p>
+<p>而[BX].IDATA可以实现C语言中结构体的功能，对应于指令：MOV AX,[BX+IDATA]；[BX][SI]则可实现C语言中二维数组的功能,对应于指令：MOV AX,[BX+SI]。。</p>
+<p>32寻址方式[BX+SI+IDATA]—常用格式：[BX].IDATA<a href="用于表格结构中的数组项">SI</a>、IDATA[BX]<a href="用于二维数组">SI</a>。。</p>
+<p>同样的问题，不同的表述方式，比较这种表述方法跟31的区别。。</p>
+<p>33遇见一问题：MOV WORD PTR [BX],0 和 MOV BYTE PTR DS:[0],0 可以执行。但是 MOV WORD PTR [0],0却无法执行。。。神马原因？？</p>
+<p>？答案：没有 MOV [0],0这种寻址方式。有 MOV DS:[0],0的寻址方式。。。</p>
+<p>34PUSH指令不能指明是BYTE还是WORD操作，因为PUSH指令规定只能是字(WORD)操作</p>
+<p>35还记得POP和PUSH指令的执行细节么？</p>
+<p>36注意理解 寻址方式[BX+SI+IDATA]，指令:MOV [BX].IDATA[SI],’V’ 相当于C语言中修改结构体中某一字符数组变量的SI位置上的值为’V’，其中BX为结构体变量指针，IDATA为该结构体变量的某一成员的指针。。</p>
+<p>[BX].IDATA[SI]形式上和C语言中结构体的用法极其相似。。</p>
+<p>37DB==BYTEDW==WORDDD==DOUBLE WORD 他们都是伪指令。。</p>
+<p>38DIV指令： 1)，除数，有8位和16位两种，在一个reg或者内存单元中。</p>
+<p>2)，被除数，默认在AX中，或者AX存低16位，DX存高16位。当除数为8位时，被除数默认在AX中；当除数为16位时，被除数AX存低16位，DX存高16位。</p>
+<p>3)，结果，当除数为8位时，AL存放结果的商，AH存放结果的余数。当除数为16位时，AX存放结果的商，DX存放结果的余数。。。</p>
+<p>39伪指令DUP。 db 200 dup(0)。。即格式为：DB 重复的次数 DUP(重的字型/字节型/双字型数据)。。</p>
+<p>40伪指令：OFFSET。 MOV AX ,OFFSET START  取start的偏移地址。</p>
+<p>41现在有必要回忆一哈指令在计算机中的执行过程了。</p>
+<p>1)，从CS:IP所指的地址读取出一个完整的指令，放入CPU的指令缓冲器中。</p>
+<p>2)，(IP)=(IP)+所读指令的长度，从而指向下一条指令。</p>
+<p>3)，执行指令。转到1)。。</p>
+<p>42汇编程序在将： JMP  SHORT+标号 指令翻译成机器码的时候，并没有直接翻译出标号所在的地址，而是计算出了标号所在地址跟当前JMP指令后第一个字节处地址的差包含在了机器码当中有计算机执行。于是就有了 JMP SHORT 标号的含义：(IP)=(IP)+8位位移。。由于8位所表示的地址长度为-128~127，所以JMP SHORT的跳转范围为-128~127。。</p>
+<p>43JMP NEAR PTR+标号  类似，表明范围为16位。。</p>
+<p>44JMP FAR PTR +标号。此指令被汇编程序翻译成为含有标号所在地址段地址和偏移地址的机器码，相当于：(CS)=段地址；(IP)=偏移地址。。</p>
+<p>45JMP AX。此指令表示(IP)=AX。。</p>
+<p>46JMP WORD PTR+内存单元地址 。功能为：用指令中内存单元地址处存放的字数据作为要转移的目的地址的偏移地址，也就是改变IP的值。。其中内存单元地址可用寻址方式的任一格式给出。。</p>
+<p>47JMP DWORD PTR+内存单元地址。功能为：(IP)=(内存单元)、(CS)=(内存单元+2)。。</p>
+<p>48JCXZ+标号 指令。有条件(CX=0)转移指令。为短转移。是否想到LOOP指令也是判断CX是否为0。。只是恰好条件相反。。</p>
+<p>49所有的条件转移指令都为短转移。</p>
+<p>50所有的循环指令都为短转移。</p>
+<p>51短转移：1，对应的机器指令包含的不是地址而是位移；2，对IP的修改范围是-128~127</p>
+<p>52揣测一哈规定短转移第一条约束的好处？？。。</p>
+<p>53JMP 2000:100是可以执行的汇编程序，但是编译器不认识，在Debug下却可以执行。。</p>
+<p>54内存地址B8000H~BFFFFH共32K的空间内，为80*25的彩色字符模式的显示缓冲区。在这段空间内写的数据会立即显示的显示器上。每4K为一页，一般情况下显示第0页的内容。80个字节对应显示器上的一行。每个要显示的字符占用两个字节，高字节存储显示属性，低字节存储ASC||码。 </p>
+<p>55RET指令：相当于 POP IP</p>
+<p>RETF指令：相当于 POP IP POP CS</p>
+<p>56一下开始CALL指令的研究。。</p>
+<p>571)，CALL指令不能实现短转移。。</p>
+<p>2)，CALL+标号。相当于 PUSH IP、JMP NEAR PTR +标号。</p>
+<p>3)，CALL FAR PTR +标号。 相当于 PUSH CS、PUSH IP、JMP FAR PTR +标号。</p>
+<p>4)，CALL +16位寄存器。 相当于 PUSH IP、JMP 16位REG。例如 JMP AX</p>
+<p>5)，CALL WORD PTR +内存单元地址。 相当于 PUSH IP、JMP WORD PTR +内存单元。</p>
+<p>6)，CALL DWORD PTR +内存单元地址。相当于 PUSH CS、PUSH IP、JMP DWORD PTR +内存单元地址。</p>
+<p>58跟JMP对比，可以再次印证 CALL指令不能实现短转移，即 没有JMP SHORT PTR S和JMP NEAR PTR S所对应的CALL指令。</p>
+<p>59计算2的n(n&gt;0)次方，可以如下：<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MOV</span> <span class="number">CX</span>, N <span class="comment">;N为立即数，即n。</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,<span class="number">1</span></span><br><span class="line"><span class="label">S:</span><span class="keyword">ADD</span> <span class="number">AX</span>,<span class="number">AX</span></span><br><span class="line"><span class="keyword">LOOP</span> S</span><br></pre></td></tr></table></figure></p>
+<p>60程序结构：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CALL</span> S</span><br><span class="line">程序段<span class="number">1</span></span><br><span class="line"><span class="label">S:</span>子程序段</span><br><span class="line"><span class="keyword">RET</span></span><br></pre></td></tr></table></figure><br>可以实现子程序段的调用，等执行完子程序段后，继续返回并向后执行，类似C语言中的函数调用。</p>
+<p>61MUL 指令。</p>
+<p>1)，格式为 MUL REG或者 MUL 内存单元地址。 其中内存单元地址要说明是8位还是16位。</p>
+<p>2)，如：MUL BL 。表示 (AX)=(AL)*(BL)</p>
+<p>MUL BX。表示(AX)=(AX)<em>(BX)的低16位；(DX)=(AX)</em>(BX)的高16位。</p>
+<p>MUL BYTE PTR DS:[0]</p>
+<p>MUL WORD PTR DS:[0]</p>
+<p>内存单元地址可以用寻址方式的任一种给出，那回想下寻址方式都有哪些呐？</p>
+<p>62编码习惯的培养：</p>
+<p>编写一个要求N的3次方的小程序段。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;说明：计算N的三次方</span></span><br><span class="line"><span class="comment">;参数：(BX)=N</span></span><br><span class="line"><span class="comment">;结果：(DX:AX)=N^3</span></span><br><span class="line"><span class="label"></span><br><span class="line">SUB1:</span><span class="keyword">MOV</span> <span class="number">AX</span>,<span class="number">BX</span></span><br><span class="line"><span class="keyword">MUL</span> <span class="number">BX</span></span><br><span class="line"><span class="keyword">MUL</span> <span class="number">BX</span></span><br><span class="line"><span class="keyword">RET</span></span><br></pre></td></tr></table></figure>
+<p>63将一个以0结尾的字母字符串大写转换成小写，代码如下：注意学习子程序代码的调用方法和返回。此在C语言中即为有一个参数的函数调用实现。</p>
+<h2 id="<!-￼12->"><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">ASSUME</span> <span class="literal">CS</span>:CODESG,<span class="literal">DS</span>:DATASG</span><br><span class="line"> </span><br><span class="line">DATASG <span class="built_in">SEGMENT</span></span><br><span class="line"><span class="pseudo">DB</span> <span class="string">'CONVERSATION'</span>,<span class="number">0</span></span><br><span class="line">DATASG ENDS</span><br><span class="line"></span><br><span class="line">CODESG <span class="built_in">SEGMENT</span></span><br><span class="line"><span class="label">START:</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,DATASG</span><br><span class="line"><span class="keyword">MOV</span> <span class="literal">DS</span>,<span class="number">AX</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="literal">SI</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">CALL</span> S</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">AX</span>,<span class="number">4C00H</span></span><br><span class="line"><span class="keyword">INT</span> <span class="number">21H</span></span><br><span class="line"><span class="label">S:</span><span class="keyword">MOV</span> <span class="literal">CL</span>,<span class="literal">DS</span>:[<span class="literal">SI</span>]</span><br><span class="line"><span class="keyword">MOV</span> <span class="number">CH</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">JCXZ</span> H</span><br><span class="line"><span class="keyword">OR</span> <span class="preprocessor">BYTE</span> <span class="preprocessor">PTR</span> <span class="literal">DS</span>:[<span class="literal">SI</span>],<span class="number">00100000B</span></span><br><span class="line"><span class="keyword">INC</span> <span class="literal">SI</span></span><br><span class="line"><span class="keyword">JMP</span> SHORT S</span><br><span class="line"><span class="label">H:</span><span class="keyword">RET</span></span><br><span class="line"></span><br><span class="line">CODESG ENDS</span><br><span class="line">END START</span><br></pre></td></tr></table></figure></h2><p>64有多个参数的子程序调用实现。下面实现将多个数据段中的字符串转化为大写，每个字符串以0结尾。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">assume</span> <span class="literal">cs</span>:codesg,<span class="literal">ds</span>:datasg</span><br><span class="line"></span><br><span class="line">datasg <span class="built_in">segment</span></span><br><span class="line"><span class="pseudo">db</span> <span class="string">'word'</span>,<span class="number">0</span></span><br><span class="line"><span class="pseudo">db</span> <span class="string">'unix'</span>,<span class="number">0</span></span><br><span class="line"><span class="pseudo">db</span> <span class="string">'wind'</span>,<span class="number">0</span></span><br><span class="line"><span class="pseudo">db</span> <span class="string">'good'</span>,<span class="number">0</span></span><br><span class="line">datasg ends</span><br><span class="line"></span><br><span class="line">codesg <span class="built_in">segment</span></span><br><span class="line"><span class="label">start:</span></span><br><span class="line"><span class="keyword">mov</span> <span class="number">ax</span>,datasg</span><br><span class="line"><span class="keyword">mov</span> <span class="literal">ds</span>,<span class="number">ax</span></span><br><span class="line"><span class="keyword">mov</span> <span class="literal">si</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">mov</span> <span class="number">bx</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">mov</span> <span class="number">cx</span>,<span class="number">4</span></span><br><span class="line"><span class="keyword">call</span> s</span><br><span class="line"><span class="keyword">mov</span> <span class="number">ax</span>,<span class="number">4c00h</span></span><br><span class="line"><span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="label">s:</span><span class="keyword">mov</span> <span class="literal">cl</span>,<span class="literal">ds</span>:[<span class="number">bx</span>+<span class="literal">si</span>]<span class="comment">;此句和下一句已经改变了cx里的值，外层的循环已经没有了意义</span></span><br><span class="line"><span class="keyword">mov</span> <span class="number">ch</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">jcxz</span> h</span><br><span class="line"><span class="keyword">add</span> <span class="preprocessor">byte</span> <span class="preprocessor">ptr</span> <span class="literal">ds</span>:[<span class="number">bx</span>+<span class="literal">si</span>],<span class="number">11011111b</span></span><br><span class="line"><span class="keyword">inc</span> <span class="literal">si</span></span><br><span class="line"><span class="keyword">jmp</span> short s</span><br><span class="line"><span class="label">h:</span><span class="keyword">add</span> <span class="number">bx</span>,<span class="number">5</span></span><br><span class="line"><span class="keyword">mov</span> <span class="literal">si</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">loop</span> s</span><br><span class="line"><span class="keyword">ret</span></span><br><span class="line"></span><br><span class="line">codesg ends </span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<p>此例表明，在内外循环中，子程序和外层程序使用的寄存器时有可能产生冲突。那么怎么解决？</p>
+<p>答案是，在子程序开始将子程序所用到的寄存器的内容保存起来。在子程序返回后再次给寄存器。</p>
+<p>例如：<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">capital:</span><span class="keyword">push</span> <span class="number">cx</span></span><br><span class="line"><span class="keyword">push</span> <span class="literal">si</span></span><br><span class="line"><span class="label">s:</span><span class="keyword">mov</span> <span class="literal">cl</span>,[<span class="literal">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="number">ch</span>,<span class="number">0</span></span><br><span class="line"><span class="keyword">jcxz</span> ok</span><br><span class="line"><span class="keyword">and</span> <span class="preprocessor">byte</span> <span class="preprocessor">ptr</span> [<span class="literal">si</span>],<span class="number">11011111b</span></span><br><span class="line"><span class="keyword">inc</span> <span class="literal">si</span></span><br><span class="line"><span class="keyword">jmp</span> short s</span><br><span class="line"><span class="label"></span><br><span class="line">ok:</span><span class="keyword">pop</span> <span class="literal">si</span></span><br><span class="line"><span class="keyword">pop</span> <span class="number">cx</span></span><br><span class="line"><span class="keyword">ret</span></span><br></pre></td></tr></table></figure><br>这就实现了外层程序调用子程序时不用考虑寄存器是否会冲突的情况。</p>
+<p>END </p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/biscuit/2015/05/30/RESTful-jersey注解/" style="float: left;">
+        ← RESTful之jersey注解
+    </a>
+    
+    
+    <a class="pull-right" href="/biscuit/2015/05/18/随笔/">
+        随笔 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2015/05/20/汇编语言学习笔记/" data-title="汇编语言学习笔记" data-url="http://hexufeng.github.io/biscuit/2015/05/20/汇编语言学习笔记/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"duoshuo_name"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, hexufeng. All Rights Reserved. Theme By Kieran
+                </p>
+                
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/biscuit/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/biscuit/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/biscuit/js/scripts.js"></script><!-- Theme scripts -->
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
